@@ -1,0 +1,829 @@
+/* =========================================================
+   Portfolio - Maho Vidal | BTS SIO option SISR
+   Feuille de styles principale
+   ========================================================= */
+
+/* ---------- 1. Variables et reglages globaux ---------- */
+:root {
+    /* Fonds : blanc, avec deux nuances tres claires pour detacher les blocs */
+    --bg:            #ffffff;
+    --bg-alt:        #f5f8fa;
+    --surface:       #ffffff;
+    --surface-2:     #f1f5f8;
+    --border:        #dbe3ea;
+
+    /* Textes : noir, et un noir legerement adouci pour les paragraphes */
+    --text:          #000000;
+    --text-muted:    #1c1c1c;
+
+    /* Couleur d'accent : bleu fonce, lisible sur fond blanc */
+    --accent:        #0077b6;
+    --accent-2:      #005b8c;
+    --accent-rgb:    0, 119, 182;
+    --accent-soft:   rgba(var(--accent-rgb), 0.10);
+
+    --success:       #0f7a4d;
+    --success-rgb:   15, 122, 77;
+    --danger:        #c62828;
+    --danger-rgb:    198, 40, 40;
+
+    --radius:        14px;
+    --radius-sm:     8px;
+    --shadow:        0 10px 30px rgba(15, 30, 45, 0.12);
+    --max-width:     1140px;
+    --font:          "Poppins", "Segoe UI", system-ui, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font);
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(900px 500px at 12% -10%, rgba(var(--accent-rgb), 0.07), transparent 60%),
+        radial-gradient(800px 500px at 95% 8%, rgba(var(--accent-rgb), 0.05), transparent 55%);
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4 {
+    color: var(--text);
+    line-height: 1.25;
+    margin: 0 0 0.6rem;
+    font-weight: 600;
+}
+
+p {
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--accent-2);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Accessibilite : anneau de focus visible partout */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Lien d'evitement pour la navigation au clavier */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+    z-index: 2000;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+}
+
+/* ---------- 2. Utilitaires de mise en page ---------- */
+.container {
+    width: min(100% - 2.5rem, var(--max-width));
+    margin-inline: auto;
+}
+
+.section {
+    padding: 4.5rem 0 1rem;
+}
+
+.section-head {
+    margin-bottom: 2rem;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid rgba(var(--accent-rgb), 0.28);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 0.9rem;
+}
+
+.section-head h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.section-head h2::after {
+    content: "";
+    display: block;
+    width: 58px;
+    height: 3px;
+    margin-top: 0.7rem;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.lead {
+    max-width: 68ch;
+}
+
+/* Espacement et suppression de marge, utilises ponctuellement */
+.mt {
+    margin-top: 1.2rem;
+}
+
+.flat {
+    margin: 0;
+}
+
+/* ---------- 3. En-tete et navigation ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.8rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 1.05rem;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00b4d8, var(--accent));
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.brand small {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+}
+
+.site-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav a {
+    display: block;
+    padding: 0.45rem 0.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.site-nav a:hover,
+.site-nav a.is-active {
+    color: var(--text);
+    background: var(--accent-soft);
+}
+
+/* ---------- 4. Section d'accueil (hero) ---------- */
+.hero {
+    padding: 4rem 0 1rem;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    letter-spacing: -0.5px;
+}
+
+.hero .role {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 56ch;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--accent-2);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--text);
+}
+
+.btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    transform: translateY(-2px);
+}
+
+.hero-portrait {
+    justify-self: center;
+    width: 100%;
+    max-width: 340px;
+}
+
+.portrait {
+    width: min(260px, 60vw);
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin-inline: auto;
+    border-radius: 50%;
+    border: 3px solid rgba(var(--accent-rgb), 0.55);
+    box-shadow: var(--shadow);
+    animation: float 7s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+
+/* Fiche d'identite sous le portrait */
+.id-card {
+    margin-top: 1.5rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+}
+
+.id-card dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.45rem 1rem;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.id-card dt {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.id-card dd {
+    margin: 0;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+/* ---------- 5. Cartes generiques ---------- */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.6rem;
+    box-shadow: 0 1px 3px rgba(15, 30, 45, 0.06);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(var(--accent-rgb), 0.45);
+    box-shadow: 0 12px 28px rgba(var(--accent-rgb), 0.12);
+}
+
+.grid {
+    display: grid;
+    gap: 1.4rem;
+}
+
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
+/* ---------- 6. Blocs de competences ---------- */
+.bloc-card h3 {
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.bloc-num {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.bloc-card ul {
+    margin: 0.8rem 0 0;
+    padding-left: 1.1rem;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+.bloc-card li {
+    margin-bottom: 0.35rem;
+}
+
+/* ---------- 7. Realisations professionnelles ---------- */
+.projet {
+    display: flex;
+    flex-direction: column;
+}
+
+.projet-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.projet h3 {
+    font-size: 1.08rem;
+    margin: 0;
+}
+
+.badge {
+    flex: 0 0 auto;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+    white-space: nowrap;
+}
+
+.badge-b1 { background: rgba(var(--success-rgb), 0.12); color: var(--success); border-color: rgba(var(--success-rgb), 0.3); }
+.badge-b3 { background: rgba(var(--danger-rgb), 0.12); color: var(--danger);  border-color: rgba(var(--danger-rgb), 0.3); }
+
+.projet p {
+    font-size: 0.93rem;
+    flex: 1;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0.8rem 0 0;
+    padding: 0;
+}
+
+.tags li {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 0.22rem 0.6rem;
+    border-radius: 6px;
+}
+
+/* ---------- 8. Tableaux ---------- */
+.table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+table {
+    width: 100%;
+    min-width: 660px;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+caption {
+    caption-side: top;
+    text-align: left;
+    padding: 1rem 1.2rem 0.4rem;
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+th, td {
+    padding: 0.85rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+
+thead th {
+    background: var(--surface-2);
+    color: var(--text);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover td {
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+td .badge {
+    display: inline-block;
+    margin: 0 0.2rem 0.2rem 0;
+}
+
+/* ---------- 9. Parcours (frise) ---------- */
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1.6rem;
+    border-left: 2px solid var(--border);
+}
+
+.timeline li {
+    position: relative;
+    padding: 0 0 1.6rem 0.4rem;
+}
+
+.timeline li::before {
+    content: "";
+    position: absolute;
+    left: -2.05rem;
+    top: 0.55rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.15);
+}
+
+.timeline .year {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+.timeline h3 {
+    font-size: 1rem;
+    margin: 0.15rem 0 0.2rem;
+}
+
+.timeline p {
+    margin: 0;
+    font-size: 0.92rem;
+}
+
+/* ---------- 10. Veille technologique ---------- */
+.veille-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+}
+
+.veille-list li {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 1rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+.veille-list strong {
+    color: var(--text);
+}
+
+/* ---------- 11. Formulaire de contact ---------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 1.4rem;
+    align-items: start;
+}
+
+form {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.field {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 0.6rem;
+}
+
+label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    color: var(--text);
+    font: inherit;
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #71808f;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+/* Validation signalee apres saisie seulement, pas au chargement */
+input:user-invalid, textarea:user-invalid {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 4px rgba(var(--danger-rgb), 0.12);
+}
+
+.form-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0.4rem 0 0;
+}
+
+/* Bandeau de confirmation ou d'erreur affiche apres l'envoi du formulaire */
+.form-message {
+    margin: 0.8rem 0 0;
+    padding: 0.8rem 1rem;
+    border: 1px solid;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.form-message[hidden] {
+    display: none;
+}
+
+.form-message.is-success {
+    color: var(--success);
+    background: rgba(var(--success-rgb), 0.10);
+    border-color: rgba(var(--success-rgb), 0.35);
+}
+
+.form-message.is-error {
+    color: var(--danger);
+    background: rgba(var(--danger-rgb), 0.10);
+    border-color: rgba(var(--danger-rgb), 0.35);
+}
+
+.form-message a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* Le bouton d'envoi pendant le traitement de la requete */
+button[disabled] {
+    opacity: 0.65;
+    cursor: progress;
+}
+
+.contact-links {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+    font-size: 0.93rem;
+    color: var(--text-muted);
+}
+
+.contact-links span {
+    color: var(--text);
+    font-weight: 500;
+}
+
+/* ---------- 12. Pied de page ---------- */
+.site-footer {
+    margin-top: 4rem;
+    border-top: 1px solid var(--border);
+    background: var(--bg-alt);
+    padding: 1.6rem 0;
+}
+
+.site-footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ---------- 13. Animation d'apparition ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- 14. Adaptation aux petits ecrans ---------- */
+@media (max-width: 900px) {
+    .hero-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-portrait {
+        order: -1;
+        max-width: none;
+    }
+
+    .site-header .container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+    }
+
+    /* Le menu devient une bande defilante pour ne pas empiler les liens */
+    .site-nav ul {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 0.15rem;
+    }
+
+    .site-nav ul::-webkit-scrollbar {
+        display: none;
+    }
+
+    .site-nav a {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 560px) {
+    .section {
+        padding-top: 3rem;
+    }
+
+    .card {
+        padding: 1.2rem;
+    }
+
+    .site-nav a {
+        padding: 0.4rem 0.55rem;
+        font-size: 0.84rem;
+    }
+
+    .id-card dl {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+    }
+
+    .id-card dt {
+        margin-top: 0.55rem;
+    }
+
+    .projet-head {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* ---------- 15. Confort de lecture et impression ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    html { scroll-behavior: auto; }
+
+    .reveal { opacity: 1; transform: none; }
+}
+
+@media print {
+    body {
+        background: #fff;
+        color: #000;
+    }
+
+    .site-header, .site-footer, form, .hero-actions {
+        display: none;
+    }
+
+    .card, .table-wrap {
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+
+    h1, h2, h3, p, li, td, th, dd, dt {
+        color: #000 !important;
+    }
+}

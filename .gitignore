@@ -1,0 +1,10 @@
+# Tout est ignore par defaut : ce dossier contient aussi d'autres TP.
+*
+
+# Seuls les fichiers du portfolio sont publies sur GitHub Pages.
+!.gitignore
+!README.md
+!index.html
+!styles.css
+!VIDAL_Maho.jpg
+!CV_BTS_SIO.pdf
