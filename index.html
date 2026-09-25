@@ -6,10 +6,19 @@
     <meta name="description" content="Portfolio de Maho Vidal, etudiant en BTS SIO option SISR au lycee Saint-Michel d'Annecy : realisations professionnelles, competences reseaux et systemes, veille technologique." />
     <meta name="author" content="Maho Vidal" />
     <title>Maho Vidal – Portfolio BTS SIO SISR</title>
+
+    <!-- Polices de caracteres : Sora pour les titres, Inter pour le texte courant.
+         Si elles ne peuvent pas etre chargees, la police systeme prend le relais. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+
     <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+    <!-- Barre indiquant la progression de lecture de la page -->
+    <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
     <a class="skip-link" href="#contenu">Aller au contenu principal</a>
 
     <!-- ============ EN-TETE ============ -->
@@ -43,10 +52,13 @@
         <!-- ============ ACCUEIL ============ -->
         <section id="accueil" class="hero">
             <div class="container hero-grid">
-                <div>
+                <div class="hero-intro">
                     <span class="eyebrow">Portfolio professionnel</span>
-                    <h1>Maho Vidal</h1>
-                    <p class="role">Étudiant en BTS SIO – option SISR<br />Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                    <h1>Maho <span class="gradient-text">Vidal</span></h1>
+                    <p class="role">
+                        Étudiant en BTS SIO – option SISR
+                        <span>Solutions d'Infrastructure, Systèmes et Réseaux</span>
+                    </p>
                     <p>
                         Je prépare le BTS Services Informatiques aux Organisations au lycée Saint-Michel d'Annecy.
                         L'option SISR m'a orienté vers l'administration des systèmes et des réseaux : mise en place
@@ -66,32 +78,62 @@
                 </div>
 
                 <div class="hero-portrait">
-                    <img class="portrait" src="VIDAL_Maho.jpg" alt="Portrait de Maho Vidal" width="260" height="260" />
+                    <!-- L'anneau degrade autour de la photo est purement decoratif -->
+                    <div class="portrait-ring">
+                        <img class="portrait" src="VIDAL_Maho.jpg" alt="Portrait de Maho Vidal" width="300" height="300" />
+                    </div>
+                </div>
 
-                    <div class="id-card">
-                        <dl>
-                            <dt>Formation</dt>
-                            <dd>BTS SIO – SISR (2025-2027)</dd>
+                <div class="id-card">
+                    <dl>
+                        <dt>Formation</dt>
+                        <dd>BTS SIO – SISR (2025-2027)</dd>
 
-                            <dt>Établissement</dt>
-                            <dd>Lycée Saint-Michel, Annecy</dd>
+                        <dt>Établissement</dt>
+                        <dd>Lycée Saint-Michel, Annecy</dd>
 
-                            <dt>Localisation</dt>
-                            <dd>Annecy (74), France</dd>
+                        <dt>Localisation</dt>
+                        <dd>Annecy (74), France</dd>
 
-                            <dt>Téléphone</dt>
-                            <dd><a href="tel:+33781062919">07 81 06 29 19</a></dd>
+                        <dt>Téléphone</dt>
+                        <dd><a href="tel:+33781062919">07 81 06 29 19</a></dd>
 
-                            <dt>E-mail</dt>
-                            <dd><a href="mailto:maho.vidal@saintmichelannecy.fr">maho.vidal@saintmichelannecy.fr</a></dd>
-                        </dl>
+                        <dt>E-mail</dt>
+                        <dd><a href="mailto:maho.vidal@saintmichelannecy.fr">maho.vidal@saintmichelannecy.fr</a></dd>
+
+                        <dt>Recherche</dt>
+                        <dd>Stage en administration systèmes &amp; réseaux</dd>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CHIFFRES CLES ============ -->
+        <section class="stats reveal" aria-label="Chiffres clés du portfolio">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat">
+                        <b>3</b>
+                        <span>blocs de compétences SISR</span>
+                    </div>
+                    <div class="stat">
+                        <b>8</b>
+                        <span>réalisations professionnelles</span>
+                    </div>
+                    <div class="stat">
+                        <b>2</b>
+                        <span>années de formation</span>
+                    </div>
+                    <div class="stat">
+                        <b>20+</b>
+                        <span>technologies pratiquées</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ============ A PROPOS ============ -->
-        <section id="apropos" class="section reveal">
+        <section id="apropos" class="section section-alt reveal">
             <div class="container">
                 <div class="section-head">
                     <span class="eyebrow">Profil</span>
@@ -183,48 +225,83 @@
                     </article>
                 </div>
 
-                <div class="grid grid-3 mt">
-                    <article class="card">
-                        <h3>Systèmes</h3>
-                        <ul class="tags">
-                            <li>Windows 10/11</li>
-                            <li>Windows Server</li>
-                            <li>Linux (Debian/Ubuntu)</li>
-                            <li>VirtualBox</li>
-                            <li>Docker</li>
-                            <li>FOG Project</li>
-                        </ul>
-                    </article>
+                <!-- Carrousel des competences techniques.
+                     La piste defile horizontalement ; les fleches et les points
+                     sont ajoutes puis pilotes par le script en bas de page. -->
+                <div class="carrousel mt" data-carrousel aria-label="Compétences techniques par domaine">
+                    <div class="carrousel-piste" data-piste>
+                            <article class="card">
+                                <h3>Systèmes d'exploitation</h3>
+                                <ul class="tags">
+                                    <li>Windows 10/11</li>
+                                    <li>Windows Server</li>
+                                    <li>Linux Debian</li>
+                                    <li>Ubuntu Server</li>
+                                    <li>Ligne de commande</li>
+                                </ul>
+                            </article>
 
-                    <article class="card">
-                        <h3>Réseaux</h3>
-                        <ul class="tags">
-                            <li>TCP/IP – adressage</li>
-                            <li>VLAN 802.1Q</li>
-                            <li>Routage statique</li>
-                            <li>DHCP / DNS</li>
-                            <li>OPNsense (pare-feu)</li>
-                            <li>Cisco Packet Tracer</li>
-                        </ul>
-                    </article>
+                            <article class="card">
+                                <h3>Réseaux</h3>
+                                <ul class="tags">
+                                    <li>TCP/IP – adressage</li>
+                                    <li>Sous-réseaux</li>
+                                    <li>VLAN 802.1Q</li>
+                                    <li>Routage statique</li>
+                                    <li>DHCP / DNS</li>
+                                </ul>
+                            </article>
 
-                    <article class="card">
-                        <h3>Outils &amp; développement</h3>
-                        <ul class="tags">
-                            <li>HTML5 / CSS3</li>
-                            <li>Bootstrap</li>
-                            <li>Python</li>
-                            <li>PowerShell</li>
-                            <li>Git / GitHub</li>
-                            <li>Suite bureautique</li>
-                        </ul>
-                    </article>
+                            <article class="card">
+                                <h3>Cybersécurité</h3>
+                                <ul class="tags">
+                                    <li>Pare-feu OPNsense</li>
+                                    <li>Chiffrement</li>
+                                    <li>Certificats / HTTPS</li>
+                                    <li>Authentification MFA</li>
+                                    <li>Sensibilisation</li>
+                                </ul>
+                            </article>
+
+                            <article class="card">
+                                <h3>Virtualisation & déploiement</h3>
+                                <ul class="tags">
+                                    <li>VirtualBox</li>
+                                    <li>Hyper-V</li>
+                                    <li>Docker</li>
+                                    <li>FOG Project</li>
+                                    <li>PXE / TFTP</li>
+                                </ul>
+                            </article>
+
+                            <article class="card">
+                                <h3>Développement web</h3>
+                                <ul class="tags">
+                                    <li>HTML5 sémantique</li>
+                                    <li>CSS3 / Grid</li>
+                                    <li>JavaScript natif</li>
+                                    <li>Bootstrap 5</li>
+                                    <li>Accessibilité</li>
+                                </ul>
+                            </article>
+
+                            <article class="card">
+                                <h3>Outils & méthodes</h3>
+                                <ul class="tags">
+                                    <li>Cisco Packet Tracer</li>
+                                    <li>Git / GitHub</li>
+                                    <li>Python</li>
+                                    <li>PowerShell</li>
+                                    <li>Documentation</li>
+                                </ul>
+                            </article>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ============ REALISATIONS ============ -->
-        <section id="realisations" class="section reveal">
+        <section id="realisations" class="section section-alt reveal">
             <div class="container">
                 <div class="section-head">
                     <span class="eyebrow">Épreuve E5</span>
@@ -235,170 +312,167 @@
                     </p>
                 </div>
 
-                <div class="grid grid-2">
+                <div class="accordeon">
 
-                    <article class="card projet">
-                        <div class="projet-head">
-                            <h3>Maquette d'infrastructure virtualisée : FOG + OPNsense</h3>
+                    <details class="projet">
+                        <summary>
+                            <span class="projet-titre">Maquette d'infrastructure virtualisée : FOG + OPNsense</span>
                             <span class="badge">Bloc 2</span>
+                            <span class="chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="projet-corps">
+                            <div>
+                                <p> Mise en place sous VirtualBox d'une maquette complète de réseau d'entreprise : un pare-feu/routeur <strong>OPNsense</strong> (SRVOPNSENSE – 192.168.1.1) assurant la passerelle et les services réseau, et un serveur de déploiement <strong>FOG</strong> (SRVFOG – 192.168.1.10) permettant la capture et le déploiement d'images de postes par le réseau (PXE). Les machines virtuelles sont configurées en accès par pont sur la carte Ethernet pour reproduire un vrai segment LAN. </p>
+                                <ul class="tags">
+                                <li>VirtualBox</li>
+                                <li>OPNsense</li>
+                                <li>FOG Project</li>
+                                <li>PXE / TFTP</li>
+                                <li>DHCP</li>
+                                <li>Plan d'adressage</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p>
-                            Mise en place sous VirtualBox d'une maquette complète de réseau d'entreprise : un
-                            pare-feu/routeur <strong>OPNsense</strong> (SRVOPNSENSE – 192.168.1.1) assurant la
-                            passerelle et les services réseau, et un serveur de déploiement <strong>FOG</strong>
-                            (SRVFOG – 192.168.1.10) permettant la capture et le déploiement d'images de postes
-                            par le réseau (PXE). Les machines virtuelles sont configurées en accès par pont sur la
-                            carte Ethernet pour reproduire un vrai segment LAN.
-                        </p>
-                        <ul class="tags">
-                            <li>VirtualBox</li>
-                            <li>OPNsense</li>
-                            <li>FOG Project</li>
-                            <li>PXE / TFTP</li>
-                            <li>DHCP</li>
-                            <li>Plan d'adressage</li>
-                        </ul>
-                    </article>
+                    </details>
 
-                    <article class="card projet">
-                        <div class="projet-head">
-                            <h3>Conception et configuration d'un réseau commuté (VLAN et routage)</h3>
+                    <details class="projet">
+                        <summary>
+                            <span class="projet-titre">Conception et configuration d'un réseau commuté (VLAN et routage)</span>
                             <span class="badge">Bloc 2</span>
+                            <span class="chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="projet-corps">
+                            <div>
+                                <p> Réalisation sous <strong>Cisco Packet Tracer</strong> d'architectures réseau de complexité croissante : découpage en <strong>VLAN</strong>, configuration des liens trunk 802.1Q, routage inter-VLAN, routage statique entre plusieurs sites et attribution d'un plan d'adressage IP cohérent. Chaque maquette a été validée par des tests de connectivité (ping, traceroute) documentés. </p>
+                                <ul class="tags">
+                                <li>Packet Tracer</li>
+                                <li>VLAN 802.1Q</li>
+                                <li>Trunk</li>
+                                <li>Routage inter-VLAN</li>
+                                <li>Sous-réseaux</li>
+                                <li>IOS Cisco</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p>
-                            Réalisation sous <strong>Cisco Packet Tracer</strong> d'architectures réseau de
-                            complexité croissante : découpage en <strong>VLAN</strong>, configuration des liens
-                            trunk 802.1Q, routage inter-VLAN, routage statique entre plusieurs sites et
-                            attribution d'un plan d'adressage IP cohérent. Chaque maquette a été validée par des
-                            tests de connectivité (ping, traceroute) documentés.
-                        </p>
-                        <ul class="tags">
-                            <li>Packet Tracer</li>
-                            <li>VLAN 802.1Q</li>
-                            <li>Trunk</li>
-                            <li>Routage inter-VLAN</li>
-                            <li>Sous-réseaux</li>
-                            <li>IOS Cisco</li>
-                        </ul>
-                    </article>
+                    </details>
 
-                    <article class="card projet">
-                        <div class="projet-head">
-                            <h3>Sécurisation et authentification des échanges d'information</h3>
+                    <details class="projet projet-b3">
+                        <summary>
+                            <span class="projet-titre">Sécurisation et authentification des échanges d'information</span>
                             <span class="badge badge-b3">Bloc 3</span>
+                            <span class="chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="projet-corps">
+                            <div>
+                                <p> Atelier professionnel portant sur la protection des échanges : mise en œuvre du chiffrement et de la signature électronique, compréhension du rôle des certificats et des autorités de certification, et sécurisation d'un accès distant. Le travail a donné lieu à un rapport technique et à une procédure de connexion sécurisée. </p>
+                                <ul class="tags">
+                                <li>Chiffrement</li>
+                                <li>Signature électronique</li>
+                                <li>Certificats / HTTPS</li>
+                                <li>Authentification</li>
+                                <li>Rapport technique</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p>
-                            Atelier professionnel portant sur la protection des échanges : mise en œuvre du
-                            chiffrement et de la signature électronique, compréhension du rôle des certificats et
-                            des autorités de certification, et sécurisation d'un accès distant. Le travail a
-                            donné lieu à un rapport technique et à une procédure de connexion sécurisée.
-                        </p>
-                        <ul class="tags">
-                            <li>Chiffrement</li>
-                            <li>Signature électronique</li>
-                            <li>Certificats / HTTPS</li>
-                            <li>Authentification</li>
-                            <li>Rapport technique</li>
-                        </ul>
-                    </article>
+                    </details>
 
-                    <article class="card projet">
-                        <div class="projet-head">
-                            <h3>Déploiement de services conteneurisés avec Docker</h3>
+                    <details class="projet">
+                        <summary>
+                            <span class="projet-titre">Déploiement de services conteneurisés avec Docker</span>
                             <span class="badge">Bloc 2</span>
+                            <span class="chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="projet-corps">
+                            <div>
+                                <p> Découverte et mise en pratique de la conteneurisation : installation de Docker, création et gestion de conteneurs, publication de ports, persistance des données par volumes et déploiement d'un service web. Rédaction d'un mémo de commandes et d'une procédure d'installation réutilisable. </p>
+                                <ul class="tags">
+                                <li>Docker</li>
+                                <li>Conteneurs</li>
+                                <li>Volumes</li>
+                                <li>Ligne de commande Linux</li>
+                                <li>Procédure d'installation</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p>
-                            Découverte et mise en pratique de la conteneurisation : installation de Docker,
-                            création et gestion de conteneurs, publication de ports, persistance des données par
-                            volumes et déploiement d'un service web. Rédaction d'un mémo de commandes et d'une
-                            procédure d'installation réutilisable.
-                        </p>
-                        <ul class="tags">
-                            <li>Docker</li>
-                            <li>Conteneurs</li>
-                            <li>Volumes</li>
-                            <li>Ligne de commande Linux</li>
-                            <li>Procédure d'installation</li>
-                        </ul>
-                    </article>
+                    </details>
 
-                    <article class="card projet">
-                        <div class="projet-head">
-                            <h3>Audit et gestion du patrimoine informatique</h3>
+                    <details class="projet projet-b1">
+                        <summary>
+                            <span class="projet-titre">Audit et gestion du patrimoine informatique</span>
                             <span class="badge badge-b1">Bloc 1</span>
+                            <span class="chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="projet-corps">
+                            <div>
+                                <p> Inventaire détaillé d'un poste de travail : relevé des composants matériels, du système d'exploitation, des logiciels installés et des licences, puis restitution sous forme de tableau d'audit exploitable. Ce travail a permis d'aborder la notion de patrimoine informatique et de cycle de vie des équipements. </p>
+                                <ul class="tags">
+                                <li>Inventaire matériel</li>
+                                <li>Tableur</li>
+                                <li>Licences logicielles</li>
+                                <li>Documentation</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p>
-                            Inventaire détaillé d'un poste de travail : relevé des composants matériels, du
-                            système d'exploitation, des logiciels installés et des licences, puis restitution
-                            sous forme de tableau d'audit exploitable. Ce travail a permis d'aborder la notion de
-                            patrimoine informatique et de cycle de vie des équipements.
-                        </p>
-                        <ul class="tags">
-                            <li>Inventaire matériel</li>
-                            <li>Tableur</li>
-                            <li>Licences logicielles</li>
-                            <li>Documentation</li>
-                        </ul>
-                    </article>
+                    </details>
 
-                    <article class="card projet">
-                        <div class="projet-head">
-                            <h3>Sensibilisation des utilisateurs à la cybersécurité</h3>
+                    <details class="projet projet-b3">
+                        <summary>
+                            <span class="projet-titre">Sensibilisation des utilisateurs à la cybersécurité</span>
                             <span class="badge badge-b3">Bloc 3</span>
+                            <span class="chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="projet-corps">
+                            <div>
+                                <p> Conception d'un support de prévention destiné aux utilisateurs sur l'authentification et les bonnes pratiques : politique de mots de passe, authentification multifacteur, reconnaissance des tentatives d'hameçonnage. Un questionnaire d'évaluation a été élaboré pour mesurer le niveau de sensibilisation. </p>
+                                <ul class="tags">
+                                <li>Politique de mots de passe</li>
+                                <li>MFA</li>
+                                <li>Hameçonnage</li>
+                                <li>Sensibilisation</li>
+                                <li>Support de présentation</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p>
-                            Conception d'un support de prévention destiné aux utilisateurs sur l'authentification
-                            et les bonnes pratiques : politique de mots de passe, authentification
-                            multifacteur, reconnaissance des tentatives d'hameçonnage. Un questionnaire
-                            d'évaluation a été élaboré pour mesurer le niveau de sensibilisation.
-                        </p>
-                        <ul class="tags">
-                            <li>Politique de mots de passe</li>
-                            <li>MFA</li>
-                            <li>Hameçonnage</li>
-                            <li>Sensibilisation</li>
-                            <li>Support de présentation</li>
-                        </ul>
-                    </article>
+                    </details>
 
-                    <article class="card projet">
-                        <div class="projet-head">
-                            <h3>Développement de la présence en ligne : sites web statiques</h3>
+                    <details class="projet projet-b1">
+                        <summary>
+                            <span class="projet-titre">Développement de la présence en ligne : sites web statiques</span>
                             <span class="badge badge-b1">Bloc 1</span>
+                            <span class="chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="projet-corps">
+                            <div>
+                                <p> Réalisation de plusieurs sites en <strong>HTML5 et CSS3</strong>, dont ce portfolio : structuration sémantique des pages, mise en page responsive (grille, media queries), formulaires avec validation, tableaux de données et prise en compte de l'accessibilité. Utilisation de Bootstrap pour comparer une approche par framework. </p>
+                                <ul class="tags">
+                                <li>HTML5 sémantique</li>
+                                <li>CSS3 / Flexbox / Grid</li>
+                                <li>Responsive design</li>
+                                <li>Accessibilité</li>
+                                <li>Bootstrap 5</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p>
-                            Réalisation de plusieurs sites en <strong>HTML5 et CSS3</strong>, dont ce portfolio :
-                            structuration sémantique des pages, mise en page responsive (grille, media queries),
-                            formulaires avec validation, tableaux de données et prise en compte de
-                            l'accessibilité. Utilisation de Bootstrap pour comparer une approche par framework.
-                        </p>
-                        <ul class="tags">
-                            <li>HTML5 sémantique</li>
-                            <li>CSS3 / Flexbox / Grid</li>
-                            <li>Responsive design</li>
-                            <li>Accessibilité</li>
-                            <li>Bootstrap 5</li>
-                        </ul>
-                    </article>
+                    </details>
 
-                    <article class="card projet">
-                        <div class="projet-head">
-                            <h3>Support et assistance aux utilisateurs</h3>
+                    <details class="projet projet-b1">
+                        <summary>
+                            <span class="projet-titre">Support et assistance aux utilisateurs</span>
                             <span class="badge badge-b1">Bloc 1</span>
+                            <span class="chevron" aria-hidden="true"></span>
+                        </summary>
+                        <div class="projet-corps">
+                            <div>
+                                <p> Traitement de demandes d'assistance dans le cadre des ateliers professionnels : qualification de l'incident, diagnostic, résolution puis rédaction de la réponse à l'utilisateur et de la fiche de suivi. Cette réalisation m'a familiarisé avec la logique d'un service support et la communication non technique. </p>
+                                <ul class="tags">
+                                <li>Gestion d'incident</li>
+                                <li>Diagnostic</li>
+                                <li>Relation utilisateur</li>
+                                <li>Suivi documenté</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p>
-                            Traitement de demandes d'assistance dans le cadre des ateliers professionnels :
-                            qualification de l'incident, diagnostic, résolution puis rédaction de la réponse à
-                            l'utilisateur et de la fiche de suivi. Cette réalisation m'a familiarisé avec la
-                            logique d'un service support et la communication non technique.
-                        </p>
-                        <ul class="tags">
-                            <li>Gestion d'incident</li>
-                            <li>Diagnostic</li>
-                            <li>Relation utilisateur</li>
-                            <li>Suivi documenté</li>
-                        </ul>
-                    </article>
+                    </details>
 
                 </div>
             </div>
@@ -483,7 +557,7 @@
         </section>
 
         <!-- ============ PARCOURS ============ -->
-        <section id="parcours" class="section reveal">
+        <section id="parcours" class="section section-alt reveal">
             <div class="container">
                 <div class="section-head">
                     <span class="eyebrow">Formation et expérience</span>
@@ -555,33 +629,57 @@
                     </p>
                 </div>
 
-                <div class="grid grid-2">
-                    <article class="card">
-                        <h3>Ma démarche</h3>
-                        <ul class="veille-list mt">
-                            <li><strong>Collecte —</strong> abonnement à des flux RSS et à des lettres d'information spécialisées, consultation hebdomadaire.</li>
-                            <li><strong>Sélection —</strong> tri des sources selon leur fiabilité et leur pertinence pour l'option SISR.</li>
-                            <li><strong>Analyse —</strong> synthèse écrite des articles retenus dans un carnet de veille, avec date, source et point clé.</li>
-                            <li><strong>Restitution —</strong> mise en pratique en TP lorsque c'est possible, et partage avec la promotion.</li>
-                        </ul>
-                    </article>
+                <article class="card">
+                    <h3>Ma démarche de veille</h3>
+                    <ul class="veille-list mt">
+                        <li><strong>Collecte —</strong> abonnement à des flux RSS et à des lettres d'information spécialisées, consultation hebdomadaire.</li>
+                        <li><strong>Sélection —</strong> tri des sources selon leur fiabilité et leur pertinence pour l'option SISR.</li>
+                        <li><strong>Analyse —</strong> synthèse écrite des articles retenus dans un carnet de veille, avec date, source et point clé.</li>
+                        <li><strong>Restitution —</strong> mise en pratique en TP lorsque c'est possible, et partage avec la promotion.</li>
+                    </ul>
+                </article>
 
-                    <article class="card">
-                        <h3>Mes sources principales</h3>
-                        <ul class="veille-list mt">
-                            <li><strong><a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener">CERT-FR (ANSSI)</a> —</strong> alertes et avis de sécurité officiels.</li>
-                            <li><strong><a href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener">Cybermalveillance.gouv.fr</a> —</strong> bonnes pratiques et sensibilisation des utilisateurs.</li>
-                            <li><strong><a href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener">Le Monde Informatique</a> —</strong> actualité des systèmes et des réseaux.</li>
-                            <li><strong><a href="https://www.zdnet.fr/" target="_blank" rel="noopener">ZDNet France</a> —</strong> tendances technologiques et retours d'expérience.</li>
-                            <li><strong>Documentations éditeurs —</strong> OPNsense, FOG Project, Docker, Microsoft Learn.</li>
-                        </ul>
-                    </article>
+                <h3 class="sous-titre">Mes sources principales</h3>
+
+                <!-- Second carrousel : les sources suivies -->
+                <div class="carrousel" data-carrousel aria-label="Sources de veille suivies">
+                    <div class="carrousel-piste" data-piste>
+                            <article class="card">
+                                <span class="badge">Officiel</span>
+                                <h3 class="mt-petit"><a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener">CERT-FR (ANSSI)</a></h3>
+                                <p>Alertes et avis de sécurité officiels de l'agence nationale. La référence pour connaître les vulnérabilités activement exploitées.</p>
+                            </article>
+
+                            <article class="card">
+                                <span class="badge">Officiel</span>
+                                <h3 class="mt-petit"><a href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener">Cybermalveillance.gouv.fr</a></h3>
+                                <p>Bonnes pratiques et supports de sensibilisation destinés aux utilisateurs. Utile pour la partie prévention du bloc 3.</p>
+                            </article>
+
+                            <article class="card">
+                                <span class="badge">Presse</span>
+                                <h3 class="mt-petit"><a href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener">Le Monde Informatique</a></h3>
+                                <p>Actualité des systèmes, des réseaux et du marché IT français. Permet de suivre les évolutions du métier.</p>
+                            </article>
+
+                            <article class="card">
+                                <span class="badge">Presse</span>
+                                <h3 class="mt-petit"><a href="https://www.zdnet.fr/" target="_blank" rel="noopener">ZDNet France</a></h3>
+                                <p>Tendances technologiques et retours d'expérience d'entreprises. Complète la veille par une approche plus prospective.</p>
+                            </article>
+
+                            <article class="card">
+                                <span class="badge">Technique</span>
+                                <h3 class="mt-petit">Documentations éditeurs</h3>
+                                <p>OPNsense, FOG Project, Docker et Microsoft Learn. La source la plus fiable pour la mise en œuvre technique en TP.</p>
+                            </article>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ============ CONTACT ============ -->
-        <section id="contact" class="section reveal">
+        <section id="contact" class="section section-alt reveal">
             <div class="container">
                 <div class="section-head">
                     <span class="eyebrow">Restons en contact</span>
@@ -593,7 +691,7 @@
                 </div>
 
                 <div class="contact-grid">
-                    <article class="card">
+                    <article class="card card-contact">
                         <h3>Coordonnées</h3>
                         <ul class="contact-links">
                             <li><span>E-mail :</span> <a href="mailto:maho.vidal@saintmichelannecy.fr">maho.vidal@saintmichelannecy.fr</a></li>
@@ -649,6 +747,9 @@
 
     </main>
 
+    <!-- Bouton de retour en haut, affiche par le script apres defilement -->
+    <button type="button" class="to-top" id="to-top" aria-label="Revenir en haut de la page">↑</button>
+
     <!-- ============ PIED DE PAGE ============ -->
     <footer class="site-footer">
         <div class="container">
@@ -703,6 +804,199 @@
 
             window.addEventListener('scroll', majLienActif, { passive: true });
             majLienActif();
+        })();
+
+        // Barre de progression de lecture, ombre de l'en-tete et bouton de retour en haut.
+        // Les trois reagissent au defilement : ils partagent donc le meme ecouteur.
+        (function () {
+            var barre = document.getElementById('progress-bar');
+            var enTete = document.querySelector('.site-header');
+            var boutonHaut = document.getElementById('to-top');
+
+            function majDefilement() {
+                var hauteurDefilable = document.documentElement.scrollHeight - window.innerHeight;
+                var progression = hauteurDefilable > 0 ? window.scrollY / hauteurDefilable : 0;
+
+                barre.style.transform = 'scaleX(' + progression + ')';
+                enTete.classList.toggle('is-stuck', window.scrollY > 8);
+                boutonHaut.classList.toggle('is-visible', window.scrollY > 600);
+            }
+
+            boutonHaut.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            window.addEventListener('scroll', majDefilement, { passive: true });
+            window.addEventListener('resize', majDefilement);
+            majDefilement();
+        })();
+
+        // Accordeon des realisations : une seule fiche ouverte a la fois,
+        // avec une ouverture et une fermeture animees en hauteur.
+        (function () {
+            var fiches = Array.prototype.slice.call(document.querySelectorAll('.projet'));
+            if (!fiches.length) { return; }
+
+            function ouvrir(fiche) {
+                var corps = fiche.querySelector('.projet-corps');
+                fiche.open = true;
+                corps.style.height = '0px';
+                // Le navigateur doit avoir pris en compte la hauteur nulle avant d'animer
+                requestAnimationFrame(function () {
+                    corps.style.height = corps.scrollHeight + 'px';
+                });
+                corps.addEventListener('transitionend', function fin(evenement) {
+                    if (evenement.propertyName !== 'height') { return; }
+                    corps.style.height = 'auto';        // laisse le contenu respirer ensuite
+                    corps.removeEventListener('transitionend', fin);
+                });
+            }
+
+            function fermer(fiche) {
+                var corps = fiche.querySelector('.projet-corps');
+                corps.style.height = corps.scrollHeight + 'px';
+                requestAnimationFrame(function () {
+                    corps.style.height = '0px';
+                });
+                corps.addEventListener('transitionend', function fin(evenement) {
+                    if (evenement.propertyName !== 'height') { return; }
+                    fiche.open = false;
+                    corps.style.height = '';
+                    corps.removeEventListener('transitionend', fin);
+                });
+            }
+
+            fiches.forEach(function (fiche) {
+                fiche.querySelector('summary').addEventListener('click', function (evenement) {
+                    // On remplace le comportement natif pour pouvoir animer la hauteur
+                    evenement.preventDefault();
+
+                    if (fiche.open) {
+                        fermer(fiche);
+                        return;
+                    }
+
+                    fiches.forEach(function (autre) {
+                        if (autre !== fiche && autre.open) { fermer(autre); }
+                    });
+                    ouvrir(fiche);
+                });
+            });
+        })();
+
+        // Carrousels : fleches, points de navigation et suivi du defilement.
+        // Le meme code pilote tous les elements portant l'attribut data-carrousel.
+        (function () {
+            document.querySelectorAll('[data-carrousel]').forEach(function (carrousel) {
+                var piste = carrousel.querySelector('[data-piste]');
+                var cartes = Array.prototype.slice.call(piste.children);
+                if (cartes.length < 2) { return; }
+
+                // Construction des commandes
+                var commandes = document.createElement('div');
+                commandes.className = 'carrousel-commandes';
+
+                var precedent = document.createElement('button');
+                precedent.type = 'button';
+                precedent.className = 'carrousel-fleche';
+                precedent.setAttribute('aria-label', 'Élément précédent');
+                precedent.innerHTML = '&#8249;';
+
+                var suivant = document.createElement('button');
+                suivant.type = 'button';
+                suivant.className = 'carrousel-fleche';
+                suivant.setAttribute('aria-label', 'Élément suivant');
+                suivant.innerHTML = '&#8250;';
+
+                var points = document.createElement('div');
+                points.className = 'carrousel-points';
+
+                cartes.forEach(function (carte, index) {
+                    var point = document.createElement('button');
+                    point.type = 'button';
+                    point.setAttribute('aria-label', 'Aller à l’élément ' + (index + 1));
+                    point.addEventListener('click', function () {
+                        piste.scrollTo({ left: carte.offsetLeft - piste.offsetLeft, behavior: 'smooth' });
+                    });
+                    points.appendChild(point);
+                });
+
+                commandes.appendChild(precedent);
+                commandes.appendChild(points);
+                commandes.appendChild(suivant);
+                carrousel.appendChild(commandes);
+
+                // Largeur d'un pas de defilement : une carte plus l'espacement
+                function pas() {
+                    if (cartes.length < 2) { return piste.clientWidth; }
+                    return cartes[1].offsetLeft - cartes[0].offsetLeft;
+                }
+
+                precedent.addEventListener('click', function () {
+                    piste.scrollBy({ left: -pas(), behavior: 'smooth' });
+                });
+
+                suivant.addEventListener('click', function () {
+                    piste.scrollBy({ left: pas(), behavior: 'smooth' });
+                });
+
+                // Mise a jour des fleches et du point actif selon la position
+                function majEtat() {
+                    var maximum = piste.scrollWidth - piste.clientWidth;
+
+                    precedent.disabled = piste.scrollLeft < 8;
+                    suivant.disabled = piste.scrollLeft > maximum - 8;
+
+                    var actif = Math.round(piste.scrollLeft / pas());
+                    Array.prototype.forEach.call(points.children, function (point, index) {
+                        point.classList.toggle('is-active', index === actif);
+                    });
+
+                    // Les commandes sont inutiles si tout tient dans la largeur
+                    commandes.style.display = maximum > 8 ? '' : 'none';
+                }
+
+                piste.addEventListener('scroll', majEtat, { passive: true });
+                window.addEventListener('resize', majEtat);
+                majEtat();
+            });
+        })();
+
+        // Comptage anime des chiffres cles, declenche a leur premiere apparition
+        (function () {
+            var bandeau = document.querySelector('.stats');
+            if (!bandeau || !('IntersectionObserver' in window)) { return; }
+
+            var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduit) { return; }
+
+            var observateur = new IntersectionObserver(function (entrees) {
+                entrees.forEach(function (entree) {
+                    if (!entree.isIntersecting) { return; }
+                    observateur.disconnect();
+
+                    bandeau.querySelectorAll('.stat b').forEach(function (element) {
+                        var texte = element.textContent;               // exemple : "20+"
+                        var cible = parseInt(texte, 10);
+                        var suffixe = texte.replace(/[0-9]/g, '');
+                        var debut = null;
+
+                        function etape(horodatage) {
+                            if (debut === null) { debut = horodatage; }
+                            var avancement = Math.min((horodatage - debut) / 1100, 1);
+                            // Courbe d'attenuation : rapide au debut, lente a la fin
+                            var valeur = Math.round(cible * (1 - Math.pow(1 - avancement, 3)));
+                            element.textContent = valeur + suffixe;
+                            if (avancement < 1) { requestAnimationFrame(etape); }
+                        }
+
+                        element.textContent = '0' + suffixe;
+                        requestAnimationFrame(etape);
+                    });
+                });
+            }, { threshold: 0.4 });
+
+            observateur.observe(bandeau);
         })();
 
         // Envoi du formulaire de contact sans rechargement de la page.
