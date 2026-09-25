@@ -112,19 +112,19 @@
         <section class="stats reveal" aria-label="Chiffres clés du portfolio">
             <div class="container">
                 <div class="stats-grid">
-                    <div class="stat">
+                    <div class="stat" data-anim="zoom">
                         <b>3</b>
                         <span>blocs de compétences SISR</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat" data-anim="zoom">
                         <b>8</b>
                         <span>réalisations professionnelles</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat" data-anim="zoom">
                         <b>2</b>
                         <span>années de formation</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat" data-anim="zoom">
                         <b>20+</b>
                         <span>technologies pratiquées</span>
                     </div>
@@ -225,76 +225,119 @@
                     </article>
                 </div>
 
-                <!-- Carrousel des competences techniques.
-                     La piste defile horizontalement ; les fleches et les points
-                     sont ajoutes puis pilotes par le script en bas de page. -->
-                <div class="carrousel mt" data-carrousel aria-label="Compétences techniques par domaine">
-                    <div class="carrousel-piste" data-piste>
-                            <article class="card">
-                                <h3>Systèmes d'exploitation</h3>
-                                <ul class="tags">
-                                    <li>Windows 10/11</li>
-                                    <li>Windows Server</li>
-                                    <li>Linux Debian</li>
-                                    <li>Ubuntu Server</li>
-                                    <li>Ligne de commande</li>
-                                </ul>
-                            </article>
+                <!-- Bandeau de logos defilant en continu.
+                     Chaque rangee contient deux fois la meme serie : c'est ce
+                     qui permet a la boucle de se refermer sans saut visible.
+                     La seconde serie est masquee aux lecteurs d'ecran. -->
+                <div class="bandeau-logos mt" role="img" aria-label="Technologies pratiquées : Windows, Debian, Ubuntu, Linux, VirtualBox, Docker, PowerShell, Cisco Packet Tracer, OPNsense, Git, GitHub, Python, HTML5, CSS3, JavaScript, Bootstrap">
+                    <div class="bandeau-piste">
+                            <span class="logo-item">
+                                <span class="logo logo-windows" aria-hidden="true"></span>Windows 10/11
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-windows" aria-hidden="true"></span>Windows Server
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-debian" aria-hidden="true"></span>Debian
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-ubuntu" aria-hidden="true"></span>Ubuntu Server
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-linux" aria-hidden="true"></span>Linux
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-virtualbox" aria-hidden="true"></span>VirtualBox
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-docker" aria-hidden="true"></span>Docker
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-powershell" aria-hidden="true"></span>PowerShell
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-windows" aria-hidden="true"></span>Windows 10/11
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-windows" aria-hidden="true"></span>Windows Server
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-debian" aria-hidden="true"></span>Debian
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-ubuntu" aria-hidden="true"></span>Ubuntu Server
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-linux" aria-hidden="true"></span>Linux
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-virtualbox" aria-hidden="true"></span>VirtualBox
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-docker" aria-hidden="true"></span>Docker
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-powershell" aria-hidden="true"></span>PowerShell
+                            </span>
+                    </div>
+                </div>
 
-                            <article class="card">
-                                <h3>Réseaux</h3>
-                                <ul class="tags">
-                                    <li>TCP/IP – adressage</li>
-                                    <li>Sous-réseaux</li>
-                                    <li>VLAN 802.1Q</li>
-                                    <li>Routage statique</li>
-                                    <li>DHCP / DNS</li>
-                                </ul>
-                            </article>
-
-                            <article class="card">
-                                <h3>Cybersécurité</h3>
-                                <ul class="tags">
-                                    <li>Pare-feu OPNsense</li>
-                                    <li>Chiffrement</li>
-                                    <li>Certificats / HTTPS</li>
-                                    <li>Authentification MFA</li>
-                                    <li>Sensibilisation</li>
-                                </ul>
-                            </article>
-
-                            <article class="card">
-                                <h3>Virtualisation & déploiement</h3>
-                                <ul class="tags">
-                                    <li>VirtualBox</li>
-                                    <li>Hyper-V</li>
-                                    <li>Docker</li>
-                                    <li>FOG Project</li>
-                                    <li>PXE / TFTP</li>
-                                </ul>
-                            </article>
-
-                            <article class="card">
-                                <h3>Développement web</h3>
-                                <ul class="tags">
-                                    <li>HTML5 sémantique</li>
-                                    <li>CSS3 / Grid</li>
-                                    <li>JavaScript natif</li>
-                                    <li>Bootstrap 5</li>
-                                    <li>Accessibilité</li>
-                                </ul>
-                            </article>
-
-                            <article class="card">
-                                <h3>Outils & méthodes</h3>
-                                <ul class="tags">
-                                    <li>Cisco Packet Tracer</li>
-                                    <li>Git / GitHub</li>
-                                    <li>Python</li>
-                                    <li>PowerShell</li>
-                                    <li>Documentation</li>
-                                </ul>
-                            </article>
+                <div class="bandeau-logos">
+                    <div class="bandeau-piste bandeau-piste--inverse">
+                            <span class="logo-item">
+                                <span class="logo logo-cisco" aria-hidden="true"></span>Cisco Packet Tracer
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-opnsense" aria-hidden="true"></span>OPNsense
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-git" aria-hidden="true"></span>Git
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-github" aria-hidden="true"></span>GitHub
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-python" aria-hidden="true"></span>Python
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-html5" aria-hidden="true"></span>HTML5
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-css3" aria-hidden="true"></span>CSS3
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-javascript" aria-hidden="true"></span>JavaScript
+                            </span>
+                            <span class="logo-item">
+                                <span class="logo logo-bootstrap" aria-hidden="true"></span>Bootstrap
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-cisco" aria-hidden="true"></span>Cisco Packet Tracer
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-opnsense" aria-hidden="true"></span>OPNsense
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-git" aria-hidden="true"></span>Git
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-github" aria-hidden="true"></span>GitHub
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-python" aria-hidden="true"></span>Python
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-html5" aria-hidden="true"></span>HTML5
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-css3" aria-hidden="true"></span>CSS3
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-javascript" aria-hidden="true"></span>JavaScript
+                            </span>
+                            <span class="logo-item" aria-hidden="true">
+                                <span class="logo logo-bootstrap" aria-hidden="true"></span>Bootstrap
+                            </span>
                     </div>
                 </div>
             </div>
@@ -314,7 +357,7 @@
 
                 <div class="accordeon">
 
-                    <details class="projet">
+                    <details data-anim="up" class="projet">
                         <summary>
                             <span class="projet-titre">Maquette d'infrastructure virtualisée : FOG + OPNsense</span>
                             <span class="badge">Bloc 2</span>
@@ -335,7 +378,7 @@
                         </div>
                     </details>
 
-                    <details class="projet">
+                    <details data-anim="up" class="projet">
                         <summary>
                             <span class="projet-titre">Conception et configuration d'un réseau commuté (VLAN et routage)</span>
                             <span class="badge">Bloc 2</span>
@@ -356,7 +399,7 @@
                         </div>
                     </details>
 
-                    <details class="projet projet-b3">
+                    <details data-anim="up" class="projet projet-b3">
                         <summary>
                             <span class="projet-titre">Sécurisation et authentification des échanges d'information</span>
                             <span class="badge badge-b3">Bloc 3</span>
@@ -376,7 +419,7 @@
                         </div>
                     </details>
 
-                    <details class="projet">
+                    <details data-anim="up" class="projet">
                         <summary>
                             <span class="projet-titre">Déploiement de services conteneurisés avec Docker</span>
                             <span class="badge">Bloc 2</span>
@@ -396,7 +439,7 @@
                         </div>
                     </details>
 
-                    <details class="projet projet-b1">
+                    <details data-anim="up" class="projet projet-b1">
                         <summary>
                             <span class="projet-titre">Audit et gestion du patrimoine informatique</span>
                             <span class="badge badge-b1">Bloc 1</span>
@@ -415,7 +458,7 @@
                         </div>
                     </details>
 
-                    <details class="projet projet-b3">
+                    <details data-anim="up" class="projet projet-b3">
                         <summary>
                             <span class="projet-titre">Sensibilisation des utilisateurs à la cybersécurité</span>
                             <span class="badge badge-b3">Bloc 3</span>
@@ -435,7 +478,7 @@
                         </div>
                     </details>
 
-                    <details class="projet projet-b1">
+                    <details data-anim="up" class="projet projet-b1">
                         <summary>
                             <span class="projet-titre">Développement de la présence en ligne : sites web statiques</span>
                             <span class="badge badge-b1">Bloc 1</span>
@@ -455,7 +498,7 @@
                         </div>
                     </details>
 
-                    <details class="projet projet-b1">
+                    <details data-anim="up" class="projet projet-b1">
                         <summary>
                             <span class="projet-titre">Support et assistance aux utilisateurs</span>
                             <span class="badge badge-b1">Bloc 1</span>
@@ -502,49 +545,49 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr data-anim="up">
                                 <th scope="row">Maquette FOG + OPNsense</th>
                                 <td>Projet en laboratoire (virtualisation)</td>
                                 <td>Concevoir une solution d'infrastructure réseau · Installer et configurer les éléments du système · Déployer des postes de travail</td>
                                 <td><span class="badge">B2</span></td>
                             </tr>
-                            <tr>
+                            <tr data-anim="up">
                                 <th scope="row">Réseau commuté : VLAN et routage</th>
                                 <td>TP réseau – Packet Tracer</td>
                                 <td>Concevoir une infrastructure réseau · Installer et configurer des équipements · Vérifier et documenter la configuration</td>
                                 <td><span class="badge">B2</span></td>
                             </tr>
-                            <tr>
+                            <tr data-anim="up">
                                 <th scope="row">Sécurisation des échanges d'information</th>
                                 <td>Atelier professionnel</td>
                                 <td>Sécuriser les équipements et les usages · Garantir l'intégrité et la confidentialité des données · Gérer l'authentification</td>
                                 <td><span class="badge badge-b3">B3</span></td>
                             </tr>
-                            <tr>
+                            <tr data-anim="up">
                                 <th scope="row">Services conteneurisés (Docker)</th>
                                 <td>TP systèmes Linux</td>
                                 <td>Mettre à disposition un service informatique · Installer et configurer un service · Rédiger une procédure</td>
                                 <td><span class="badge badge-b1">B1</span> <span class="badge">B2</span></td>
                             </tr>
-                            <tr>
+                            <tr data-anim="up">
                                 <th scope="row">Audit du patrimoine informatique</th>
                                 <td>Atelier professionnel</td>
                                 <td>Gérer le patrimoine informatique · Recenser et identifier les ressources · Exploiter des référentiels et documentations</td>
                                 <td><span class="badge badge-b1">B1</span></td>
                             </tr>
-                            <tr>
+                            <tr data-anim="up">
                                 <th scope="row">Sensibilisation à la cybersécurité</th>
                                 <td>Atelier professionnel</td>
                                 <td>Sensibiliser les utilisateurs · Préserver l'identité numérique · Protéger les données à caractère personnel</td>
                                 <td><span class="badge badge-b3">B3</span></td>
                             </tr>
-                            <tr>
+                            <tr data-anim="up">
                                 <th scope="row">Sites web statiques et portfolio</th>
                                 <td>Projet individuel</td>
                                 <td>Développer la présence en ligne de l'organisation · Travailler en mode projet · Organiser son développement professionnel</td>
                                 <td><span class="badge badge-b1">B1</span></td>
                             </tr>
-                            <tr>
+                            <tr data-anim="up">
                                 <th scope="row">Support et assistance utilisateurs</th>
                                 <td>Atelier professionnel</td>
                                 <td>Répondre aux incidents et aux demandes d'assistance · Traiter des demandes concernant les services · Communiquer avec l'utilisateur</td>
@@ -568,22 +611,22 @@
                     <article class="card">
                         <h3>Formation</h3>
                         <ol class="timeline mt">
-                            <li>
+                            <li data-anim="left">
                                 <span class="year">2025 – 2027</span>
                                 <h3>BTS SIO – option SISR</h3>
                                 <p>Lycée Saint-Michel, Annecy. Systèmes, réseaux, cybersécurité, support utilisateur et gestion de projet.</p>
                             </li>
-                            <li>
+                            <li data-anim="left">
                                 <span class="year">2023 – 2024</span>
                                 <h3>PASS – Parcours Accès Santé Spécifique</h3>
                                 <p>Première année d'études de santé. Méthode de travail, rigueur scientifique et gestion d'un volume important d'informations.</p>
                             </li>
-                            <li>
+                            <li data-anim="left">
                                 <span class="year">2022 – 2023</span>
                                 <h3>Baccalauréat général</h3>
                                 <p>Obtention du baccalauréat.</p>
                             </li>
-                            <li>
+                            <li data-anim="left">
                                 <span class="year">Avant 2022</span>
                                 <h3>Études secondaires</h3>
                                 <p>Développement d'un intérêt marqué pour les domaines techniques et numériques.</p>
@@ -595,12 +638,12 @@
                         <h3>Expérience professionnelle</h3>
                         <!-- A COMPLETER : remplacer par le stage reel (entreprise, dates, missions) des qu'il est effectue. -->
                         <ol class="timeline mt">
-                            <li>
+                            <li data-anim="left">
                                 <span class="year">2026 – à venir</span>
                                 <h3>Stage de 1re année – 5 semaines</h3>
                                 <p>Recherche d'un stage en administration systèmes et réseaux dans le bassin annécien. Missions visées : support utilisateur, gestion du parc, mise en œuvre et maintenance de services d'infrastructure.</p>
                             </li>
-                            <li>
+                            <li data-anim="left">
                                 <span class="year">2025 – 2027</span>
                                 <h3>Ateliers de professionnalisation</h3>
                                 <p>Travail en équipe sur des situations professionnelles : rédaction de procédures d'installation, rapports techniques, réponses aux demandes d'assistance et présentations orales.</p>
@@ -632,17 +675,17 @@
                 <article class="card">
                     <h3>Ma démarche de veille</h3>
                     <ul class="veille-list mt">
-                        <li><strong>Collecte —</strong> abonnement à des flux RSS et à des lettres d'information spécialisées, consultation hebdomadaire.</li>
-                        <li><strong>Sélection —</strong> tri des sources selon leur fiabilité et leur pertinence pour l'option SISR.</li>
-                        <li><strong>Analyse —</strong> synthèse écrite des articles retenus dans un carnet de veille, avec date, source et point clé.</li>
-                        <li><strong>Restitution —</strong> mise en pratique en TP lorsque c'est possible, et partage avec la promotion.</li>
+                        <li data-anim="right"><strong>Collecte —</strong> abonnement à des flux RSS et à des lettres d'information spécialisées, consultation hebdomadaire.</li>
+                        <li data-anim="right"><strong>Sélection —</strong> tri des sources selon leur fiabilité et leur pertinence pour l'option SISR.</li>
+                        <li data-anim="right"><strong>Analyse —</strong> synthèse écrite des articles retenus dans un carnet de veille, avec date, source et point clé.</li>
+                        <li data-anim="right"><strong>Restitution —</strong> mise en pratique en TP lorsque c'est possible, et partage avec la promotion.</li>
                     </ul>
                 </article>
 
                 <h3 class="sous-titre">Mes sources principales</h3>
 
                 <!-- Second carrousel : les sources suivies -->
-                <div class="carrousel" data-carrousel aria-label="Sources de veille suivies">
+                <div class="carrousel" data-carrousel data-auto="5000" aria-label="Sources de veille suivies">
                     <div class="carrousel-piste" data-piste>
                             <article class="card">
                                 <span class="badge">Officiel</span>
@@ -831,6 +874,67 @@
             majDefilement();
         })();
 
+        // Animations d'apparition fines : chaque element portant data-anim
+        // se met en place quand il entre dans l'ecran. Les elements voisins
+        // d'une meme serie sont decales pour obtenir un effet de cascade.
+        (function () {
+            var elements = Array.prototype.slice.call(document.querySelectorAll('[data-anim]'));
+            if (!elements.length) { return; }
+
+            if (!('IntersectionObserver' in window)) {
+                elements.forEach(function (el) { el.classList.add('is-in'); });
+                return;
+            }
+
+            // Position de l'element parmi ses freres portant aussi data-anim
+            elements.forEach(function (element) {
+                var freres = Array.prototype.filter.call(
+                    element.parentNode.children,
+                    function (enfant) { return enfant.hasAttribute('data-anim'); }
+                );
+                var rang = freres.indexOf(element);
+                element.style.setProperty('--d', Math.min(rang, 8) * 0.07 + 's');
+            });
+
+            var observateur = new IntersectionObserver(function (entrees) {
+                entrees.forEach(function (entree) {
+                    if (!entree.isIntersecting) { return; }
+                    entree.target.classList.add('is-in');
+                    observateur.unobserve(entree.target);
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+            elements.forEach(function (element) { observateur.observe(element); });
+        })();
+
+        // Leger effet de profondeur sur l'accueil : le texte et la photo ne
+        // defilent pas tout a fait a la meme vitesse que la page.
+        (function () {
+            var intro = document.querySelector('.hero-intro');
+            var photo = document.querySelector('.portrait-ring');
+            if (!intro || !photo) { return; }
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+
+            var enCours = false;
+
+            function majProfondeur() {
+                var y = window.scrollY;
+                if (y < 800) {
+                    intro.style.transform = 'translateY(' + (y * 0.09) + 'px)';
+                    photo.style.transform = 'translateY(' + (y * -0.05) + 'px)';
+                }
+                enCours = false;
+            }
+
+            window.addEventListener('scroll', function () {
+                // On ne recalcule qu'une fois par rendu, pour rester fluide
+                if (enCours) { return; }
+                enCours = true;
+                requestAnimationFrame(majProfondeur);
+            }, { passive: true });
+        })();
+
         // Accordeon des realisations : une seule fiche ouverte a la fois,
         // avec une ouverture et une fermeture animees en hauteur.
         (function () {
@@ -959,6 +1063,49 @@
                 piste.addEventListener('scroll', majEtat, { passive: true });
                 window.addEventListener('resize', majEtat);
                 majEtat();
+
+                // Defilement automatique si l'attribut data-auto est present.
+                // Arrive au bout, on revient au debut pour boucler.
+                var delai = parseInt(carrousel.getAttribute('data-auto'), 10);
+                if (!delai) { return; }
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+
+                var minuteur = null;
+
+                function avancer() {
+                    var maximum = piste.scrollWidth - piste.clientWidth;
+                    if (maximum <= 8) { return; }
+
+                    if (piste.scrollLeft > maximum - 8) {
+                        piste.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        piste.scrollBy({ left: pas(), behavior: 'smooth' });
+                    }
+                }
+
+                function lancer() {
+                    arreter();
+                    minuteur = setInterval(avancer, delai);
+                }
+
+                function arreter() {
+                    if (minuteur) { clearInterval(minuteur); minuteur = null; }
+                }
+
+                // Le defilement se met en pause des que le visiteur interagit
+                ['mouseenter', 'focusin', 'touchstart'].forEach(function (evenement) {
+                    carrousel.addEventListener(evenement, arreter, { passive: true });
+                });
+                ['mouseleave', 'focusout'].forEach(function (evenement) {
+                    carrousel.addEventListener(evenement, lancer);
+                });
+
+                // ... et quand l'onglet passe en arriere-plan
+                document.addEventListener('visibilitychange', function () {
+                    if (document.hidden) { arreter(); } else { lancer(); }
+                });
+
+                lancer();
             });
         })();
 
